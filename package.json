@@ -1,0 +1,14 @@
+{
+  "name": "autojs_jinbizhuangyuan.git",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cxwithyxy/autojs_jinbizhuangyuan.git",
+  "author": "chenxuan <523764720@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autojs_dev_tool_server": "https://github.com/cxwithyxy/autojs_dev_tool/releases/download/v0.20200624172357.0/autojsserver.tgz"
+  },
+  "scripts": {
+    "wjs": "yarn autojsserver src"
+  }
+}
