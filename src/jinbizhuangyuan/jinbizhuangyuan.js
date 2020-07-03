@@ -9,4 +9,4 @@ funs.backToHomePage()
 sleep(1e3)
 
 
-funs.clickAreaByImage("1.png");
+funs.clickAreaByImage("targetimage/jinbizhuangyuan/1.png");

@@ -18,15 +18,15 @@ funs.backToHomePage = function ()
         className: "com.taobao.tao.TBMainActivity"
     });
     sleep(1e3)
-    let homeBtn = images.read("homebtn.png");
+    let homeBtn = images.read("targetimage/home/homebtn.png");
     let p = images.findImage(captureScreen(), homeBtn);
     if(p)
     {
         return
     }
-    funs.clickAreaByImage("homebtnClick.png")
+    funs.clickAreaByImage("targetimage/home/homebtnClick.png")
     sleep(1e3)
-    homeBtn = images.read("homebtnTop.png");
+    homeBtn = images.read("targetimage/home/homebtnTop.png");
     p = images.findImage(captureScreen(), homeBtn);
     if(p)
     {
