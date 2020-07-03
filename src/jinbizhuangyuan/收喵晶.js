@@ -21,6 +21,22 @@ funs.dianLixianShouyi = function ()
     }
 }
 
+funs.toMaochao = function ()
+{
+    funs.backToHomePage()
+    funs.clickAreaByImage("targetimage/miaojing/maochao.png")
+    waitForActivity("com.taobao.browser.BrowserActivity")
+    sleep(3e3)
+}
+ 
+funs.toMaodian = function ()
+{
+    funs.toMaochao()
+    funs.clickAreaByImage("targetimage/miaojing/miaodianBtn.png")
+    waitForActivity("com.taobao.browser.exbrowser.BrowserUpperActivity")
+    sleep(15e3)
+}
+
 
 funs.backToHomePage()
 
