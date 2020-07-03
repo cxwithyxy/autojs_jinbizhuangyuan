@@ -3,10 +3,16 @@ requestScreenCapture();
 
 let funs = {}
 
-funs.clickAreaByImage = function(imgpath)
+funs.matchImage = function (imgpath)
 {
     let targetImg = images.read(imgpath);
     let p = images.findImage(captureScreen(), targetImg);
+    return p
+}
+
+funs.clickAreaByImage = function(imgpath)
+{
+    let p = funs.matchImage(imgpath)
     if(!p)
     {
         throw new Error("no match: " + imgpath)
@@ -53,6 +59,7 @@ funs.toMaodian = function ()
     funs.toMaochao()
     funs.clickAreaByImage("targetimage/miaojing/miaodianBtn.png")
     waitForActivity("com.taobao.browser.exbrowser.BrowserUpperActivity")
+    sleep(15e3)
 }
 
 module.exports = funs
