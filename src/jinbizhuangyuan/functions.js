@@ -10,14 +10,17 @@ funs.matchImage = function (imgpath)
     return p
 }
 
-funs.clickAreaByImage = function(imgpath)
+funs.clickAreaByImage = function(imgpath, noerror)
 {
     let p = funs.matchImage(imgpath)
-    if(!p)
+    if(!p && !noerror)
     {
         throw new Error("no match: " + imgpath)
     }
-    click(p.x, p.y)
+    if(p)
+    {
+        click(p.x, p.y)
+    }
     return p
 }
 
