@@ -1,5 +1,5 @@
 auto()
-requestScreenCapture();
+// requestScreenCapture();
 let funs = require("functions.js")
 
 console.show()
@@ -12,5 +12,20 @@ console.show()
 // funs.clickAreaByImage("targetimage/jinbizhuangyuan/1.png");
 
 
-funs.clickAreaByUIObject(bounds(936, 837, 1062, 957).findOne())
-// click(936 + 1, 837 + 1)
+funs.openTJBList = function ()
+{
+    funs.clickAreaByUIObject(textContains("偷金币").findOne())
+}
+
+funs.jiaoshui = function ()
+{
+    funs.clickAreaByUIObject(text("浇水").findOne())
+}
+
+
+// let jiaoshuiButton = text("可浇水").find()
+// console.log(jiaoshuiButton.length);
+
+// funs.clickAreaByUIObject(jiaoshuiButton[0])
+
+back()

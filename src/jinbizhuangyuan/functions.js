@@ -1,5 +1,4 @@
 auto()
-requestScreenCapture();
 
 let funs = {}
 
