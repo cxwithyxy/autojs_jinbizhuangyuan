@@ -24,6 +24,12 @@ funs.clickAreaByImage = function(imgpath, noerror)
     return p
 }
 
+funs.clickAreaByUIObject = function (UIObject)
+{
+    let uiRect = UIObject.bounds()
+    click(uiRect.left, uiRect.top)
+}
+
 funs.backToHomePage = function ()
 {
     app.startActivity({
