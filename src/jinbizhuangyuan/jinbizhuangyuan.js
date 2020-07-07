@@ -1,7 +1,8 @@
 auto()
-requestScreenCapture();
+// requestScreenCapture();
 let funs = require("./functions.js")
-let zhuanyuanFriendFuns = require("JBZY_friends.js")
+let zhuanyuanFriendFuns = require("./JBZY_friends.js")
+let haodianFuns = require("./JBZY_haodianrenwu.js")
 
 console.show()
 
@@ -12,6 +13,5 @@ console.show()
 
 // funs.clickAreaByImage("targetimage/jinbizhuangyuan/1.png");
 
-zhuanyuanFriendFuns.loopFriendsAndDoIt()
 
-
+haodianFuns.haodianrenwuDo()
