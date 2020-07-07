@@ -1,6 +1,6 @@
 auto()
 
-let funs = {}
+let funs = require("./functions.js")
 
 funs.haodianrenwuDo = function()
 {
@@ -22,6 +22,13 @@ funs.haodianrenwuDo = function()
         back()
         sleep(1e3)
     }
+    console.log("好店任务完成了")
+}
+
+funs.gotoHaodian = function ()
+{
+    funs.clickAreaByUIObject(funs.getLeftBottomButtons()[0])
+    sleep(3e3)
 }
 
 module.exports = funs

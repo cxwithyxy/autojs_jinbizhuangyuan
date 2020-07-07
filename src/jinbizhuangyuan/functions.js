@@ -29,6 +29,13 @@ funs.clickAreaByUIObject = function (UIObject)
     click(uiRect.left, uiRect.top)
 }
 
+funs.getLeftBottomButtons = function ()
+{
+    let a = className("android.widget.ListView").depth(10).find()[0]
+    let b = a.children()
+    return b
+}
+
 funs.backToHomePage = function ()
 {
     app.startActivity({

@@ -14,4 +14,5 @@ console.show()
 // funs.clickAreaByImage("targetimage/jinbizhuangyuan/1.png");
 
 
+haodianFuns.gotoHaodian()
 haodianFuns.haodianrenwuDo()
