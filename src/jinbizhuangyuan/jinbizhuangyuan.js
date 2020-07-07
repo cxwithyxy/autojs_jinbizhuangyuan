@@ -1,6 +1,6 @@
 auto()
-// requestScreenCapture();
-let funs = require("functions.js")
+requestScreenCapture();
+let funs = require("./functions.js")
 let zhuanyuanFriendFuns = require("JBZY_friends.js")
 
 console.show()

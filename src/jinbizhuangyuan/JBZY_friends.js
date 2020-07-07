@@ -1,6 +1,5 @@
 auto()
-
-let funs = {}
+let funs = require("./functions.js")
 
 funs.openTJBList = function ()
 {
@@ -12,13 +11,11 @@ funs.jiaoshui = function ()
     funs.clickAreaByUIObject(text("浇水").findOne())
 }
 
-funs.loopJiaoshuiCount = 10
-
 funs.loopJiaoshui = function ()
 {
     while(true)
     {
-        if(funs.loopJiaoshuiCount <= 0)
+        if(funs.matchImage("targetimage/jinbizhuangyuan/jiaoshuiping_kong.png"))
         {
             break
         }
@@ -31,8 +28,6 @@ funs.loopJiaoshui = function ()
         jiaoshuiButton[0].click()
         sleep(8e3)
         funs.jiaoshui()
-        funs.loopJiaoshuiCount--
-        console.log("可浇水次数剩余: " + funs.loopJiaoshuiCount);
         sleep(3e3)
         back()
         sleep(3e3)
