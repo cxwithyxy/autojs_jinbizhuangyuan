@@ -3,7 +3,8 @@ let funs = require("./functions.js")
 
 funs.openTJBList = function ()
 {
-    funs.clickAreaByUIObject(textContains("偷金币").findOne())
+    funs.clickAreaByUIObject(textContains("偷金币").find()[0])
+    sleep(5e3)
 }
 
 funs.jiaoshui = function ()
@@ -71,6 +72,14 @@ funs.loopFriendsAndDoIt = function ()
         }
         sleep(2e3)
     }
+}
+
+funs.friendJob = function ()
+{
+    console("开始搞好友偷金币")
+    funs.openTJBList()
+    funs.loopFriendsAndDoIt()
+    console("搞好友偷金币完了")
 }
 
 

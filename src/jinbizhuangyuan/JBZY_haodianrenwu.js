@@ -31,4 +31,12 @@ funs.gotoHaodian = function ()
     sleep(3e3)
 }
 
+funs.haodianJob = function ()
+{
+    console.log("开始搞好店任务");
+    funs.gotoHaodian()
+    funs.haodianrenwuDo()
+    console.log("搞好店任务完成了");
+}
+
 module.exports = funs
