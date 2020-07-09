@@ -76,10 +76,10 @@ funs.loopFriendsAndDoIt = function ()
 
 funs.friendJob = function ()
 {
-    console("开始搞好友偷金币")
+    console.log("开始搞好友偷金币")
     funs.openTJBList()
     funs.loopFriendsAndDoIt()
-    console("搞好友偷金币完了")
+    console.log("搞好友偷金币完了")
 }
 
 
