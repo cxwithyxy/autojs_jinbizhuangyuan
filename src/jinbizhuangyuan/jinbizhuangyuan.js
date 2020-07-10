@@ -1,5 +1,5 @@
 auto()
-
+requestScreenCapture();
 let funs = require("./functions.js")
 let zhuanyuanFriendFuns = require("./JBZY_friends.js")
 let haodianFuns = require("./JBZY_haodianrenwu.js")
@@ -31,7 +31,6 @@ function qiandao()
 
 function main()
 {
-    requestScreenCapture();
     console.show()
     
     gotoZhuangyuan()
@@ -49,35 +48,100 @@ console.show()
 
 funs.openShuidi = function ()
 {
-    let a = text("this is a apng image").find()
-    a[0].parent().click()
-}
-
-let a = textMatches(new RegExp("^逛.*")).find()
-
-let allBox = a[0].parent().children()
-for(let i = 0; i < allBox.length; i++)
-{
-    let textBox = allBox[i]
-    let b = textBox.text().match(new RegExp("^逛.*"))
-    if(b)
-    {
-        console.log(textBox.text());
-        loop1: for(let j = i; j < allBox.length; j++)
-        {
-            let nextBox = allBox[j]
-            switch(nextBox.text())
-            {
-                case "领取":
-                case "去完成":
-                case "去逛逛":
-                    console.log(nextBox.text())
-                    nextBox.click()
-                    sleep(30e3)
-                    break loop1
-            }
-        }
-    }
+    click(960, 1123)
+    console.log("点击水滴按钮");
+    sleep(3e3)
     
 }
+
+
+let textBoxList = []
+let buttonList = []
+
+funs.initTextBoxList = function()
+{
+    let a = textMatches(new RegExp("^逛.*")).find()
+    let textBoxParent = a[0].parent()
+    textBoxList = []
+    buttonList = []
+    for(let i = 0; i < textBoxParent.childCount(); i++)
+    {
+        let tbox = textBoxParent.child(i)
+        let tboxSize = tbox.bounds()
+        if(tboxSize.width() > 450)
+        {
+            textBoxList.push(tbox)
+        }
+        if(tboxSize.width() == 186)
+        {
+            buttonList.push(tbox)
+        }
+    }
+}
+
+funs.hasAllShudiDo = function ()
+{
+    let countA = 0
+    let countB = 0
+    for(let i = 0; i < textBoxList.length; i++)
+    {
+        let textBox = textBoxList[i]
+        let b = textBox.text().match(new RegExp("^逛.*"))
+        if(b)
+        {
+            countA++
+        }
+    }
+    for(let i = 0; i < textBoxList.length; i++)
+    {
+        let buttonBox = buttonList[i]
+        if(buttonBox.text() == "领取")
+        {
+            countB++
+        }
+    }
+
+    return countA == countB
+}
+
+funs.shuidiDo = function ()
+{
+    while(true)
+    {
+        funs.openShuidi()
+        funs.initTextBoxList()
+        if(funs.hasAllShudiDo())
+        {
+            break
+        }
+        for(let i = 0; i < textBoxList.length; i++)
+        {
+            let textBox = textBoxList[i]
+            let b = textBox.text().match(new RegExp("^逛.*"))
+            if(b)
+            {
+                console.log(textBox.text().split(" ")[0]);
+                if(
+                    buttonList[i].text() == "领取" ||
+                    buttonList[i].text() == "已完成"
+                ){
+                    console.log("跳过了")
+                    continue
+                }
+                buttonList[i].click()
+                console.log("点击了")
+                sleep(30e3)
+                back()
+                sleep(3e3)
+                break
+            }
+        } 
+        gotoZhuangyuan()
+    }
+}
+
+gotoZhuangyuan()
+funs.shuidiDo()
+
+
 console.log("完事了")
