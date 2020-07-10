@@ -1,5 +1,5 @@
 auto()
-requestScreenCapture();
+
 let funs = require("./functions.js")
 let zhuanyuanFriendFuns = require("./JBZY_friends.js")
 let haodianFuns = require("./JBZY_haodianrenwu.js")
@@ -29,16 +29,55 @@ function qiandao()
     console.log("签到完了")
 }
 
+function main()
+{
+    requestScreenCapture();
+    console.show()
+    
+    gotoZhuangyuan()
+    shoucai()
+    qiandao()
+    gotoZhuangyuan()
+    haodianFuns.haodianJob()
+    gotoZhuangyuan()
+    zhuanyuanFriendFuns.friendJob()
+    
+    console.log("金币庄园任务全部完成了");
+}
+
 console.show()
 
-gotoZhuangyuan()
-shoucai()
-qiandao()
-gotoZhuangyuan()
-haodianFuns.haodianJob()
-gotoZhuangyuan()
-zhuanyuanFriendFuns.friendJob()
+funs.openShuidi = function ()
+{
+    let a = text("this is a apng image").find()
+    a[0].parent().click()
+}
 
-console.log("金币庄园任务全部完成了");
+let a = textMatches(new RegExp("^逛.*")).find()
 
-
+let allBox = a[0].parent().children()
+for(let i = 0; i < allBox.length; i++)
+{
+    let textBox = allBox[i]
+    let b = textBox.text().match(new RegExp("^逛.*"))
+    if(b)
+    {
+        console.log(textBox.text());
+        loop1: for(let j = i; j < allBox.length; j++)
+        {
+            let nextBox = allBox[j]
+            switch(nextBox.text())
+            {
+                case "领取":
+                case "去完成":
+                case "去逛逛":
+                    console.log(nextBox.text())
+                    nextBox.click()
+                    sleep(30e3)
+                    break loop1
+            }
+        }
+    }
+    
+}
+console.log("完事了")
