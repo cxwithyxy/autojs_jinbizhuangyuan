@@ -3,6 +3,7 @@ auto()
 let funs = require("./../functions.js")
 
 funs.gotoZhuangyuan = function () {
+    console.log("进入金币庄园")
     funs.backToHomePage()
     sleep(1e3)
     desc("领淘金币").find()[0].click()
