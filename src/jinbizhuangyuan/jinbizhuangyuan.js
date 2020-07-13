@@ -30,21 +30,18 @@ function main ()
     console.log("金币庄园任务全部完成了");
 }
 
-sleep(5e3)
-main()
-
-// while (true)
-// {
-//     try
-//     {
-//         main()
-//         break
-//     }
-//     catch(e)
-//     {
-//         console.log(e)
-//         console.log("出现错误, 10s后重新运行")
-//         sleep(10e3)
-//     }
-// }
+while (true)
+{
+    try
+    {
+        main()
+        break
+    }
+    catch(e)
+    {
+        console.log(e)
+        console.log("出现错误, 10s后重新运行")
+        sleep(10e3)
+    }
+}
 
