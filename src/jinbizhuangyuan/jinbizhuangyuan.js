@@ -7,7 +7,7 @@ let haodianFuns = require("./JBZY_haodianrenwu.js")
 function gotoZhuangyuan() {
     funs.backToHomePage()
     sleep(1e3)
-    funs.clickAreaByImage("targetimage/jinbizhuangyuan/1.png");
+    desc("领淘金币").find()[0].click()
     sleep(10e3)
 }
 
@@ -97,27 +97,18 @@ funs.shuidiButtonCanClick = function (buttonBox)
 
 funs.hasAllShudiDo = function ()
 {
-    let countA = 0
-    let countB = 0
+    
     for(let i = 0; i < textBoxList.length; i++)
     {
         let textBox = textBoxList[i]
-        let b = textBox.text().match(new RegExp("^逛.*"))
-        if(b)
-        {
-            countA++
-        }
-    }
-    for(let i = 0; i < textBoxList.length; i++)
-    {
         let buttonBox = buttonList[i]
-        if(!funs.shuidiButtonCanClick(buttonBox))
+        let b = textBox.text().match(new RegExp("^逛.*"))
+        if(b && funs.shuidiButtonCanClick(buttonBox))
         {
-            countB++
+            return false
         }
     }
-
-    return countA == countB
+    return true
 }
 
 funs.shuidiDo = function ()
