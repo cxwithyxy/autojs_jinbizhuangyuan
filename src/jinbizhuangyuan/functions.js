@@ -2,6 +2,16 @@ auto()
 
 let funs = {}
 
+funs.autoRequestScreenCapture = function ()
+{
+    threads.start(function ()
+    {
+        sleep(5e3)
+        click(783, 1805)
+    })
+    requestScreenCapture();
+}
+
 funs.matchImage = function (imgpath)
 {
     let targetImg = images.read(imgpath);
