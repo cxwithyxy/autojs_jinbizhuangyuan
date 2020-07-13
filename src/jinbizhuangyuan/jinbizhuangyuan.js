@@ -1,10 +1,10 @@
 auto()
 requestScreenCapture();
 let funs = require("./functions.js")
-let zhuangyuanGlobal = require("./JBZY_zhuangyuan.js")
-let zhuanyuanFriendFuns = require("./JBZY_friends.js")
-let haodianFuns = require("./JBZY_haodianrenwu.js")
-let shuidiFuns = require("./JBZY_shuidi.js")
+let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
+let zhuanyuanFriendFuns = require("./JBZY/JBZY_friends.js")
+let haodianFuns = require("./JBZY/JBZY_haodianrenwu.js")
+let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 
 

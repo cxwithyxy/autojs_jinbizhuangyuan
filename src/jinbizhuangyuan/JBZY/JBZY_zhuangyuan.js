@@ -1,6 +1,6 @@
 auto()
 
-let funs = require("./functions.js")
+let funs = require("./../functions.js")
 
 funs.gotoZhuangyuan = function () {
     funs.backToHomePage()
