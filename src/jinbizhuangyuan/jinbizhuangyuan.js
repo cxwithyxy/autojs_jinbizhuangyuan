@@ -1,5 +1,5 @@
 auto()
-requestScreenCapture();
+// requestScreenCapture();
 let funs = require("./functions.js")
 let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
 let zhuanyuanFriendFuns = require("./JBZY/JBZY_friends.js")
@@ -8,8 +8,9 @@ let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 function main ()
 {
+    sleep(5e3)
+    funs.unlockScreen()
     console.show()
-    
     console.log("金币庄园任务开始搞");
 
     zhuangyuanGlobal.gotoZhuangyuan()
@@ -43,3 +44,4 @@ while (true)
         sleep(10e3)
     }
 }
+

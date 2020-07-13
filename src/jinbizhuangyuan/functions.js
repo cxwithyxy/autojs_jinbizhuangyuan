@@ -61,4 +61,25 @@ funs.backToHomePage = function ()
     }
 }
 
+funs.unlockScreen = function ()
+{
+    if(!device.isScreenOn())
+    {
+        device.wakeUp()
+        sleep(1e3)
+        let x = device.width / 2
+        let y = device.height - 10
+        gesture(200,
+                [x, y * (5/5) ],
+                [x, y * (4/5) ],
+                [x, y * (4/5) ],
+                [x, y * (3/5) ],
+                [x, y * (2/5) ],
+                [x, y * (1/5) ],
+                [x, y * (0/5) ]
+        )
+        sleep(200)
+    }
+}
+
 module.exports = funs
