@@ -54,6 +54,13 @@ funs.openShuidi = function ()
     
 }
 
+funs.clickYijianLingshuidi = function ()
+{
+    sleep(1e3)
+    text("一键领取").find()[0].click()
+    sleep(1e3)
+}
+
 
 let textBoxList = []
 let buttonList = []
@@ -116,6 +123,7 @@ funs.shuidiDo = function ()
     while(true)
     {
         funs.openShuidi()
+        funs.clickYijianLingshuidi()
         funs.initTextBoxList()
         if(funs.hasAllShudiDo())
         {
@@ -146,18 +154,5 @@ funs.shuidiDo = function ()
 
 gotoZhuangyuan()
 funs.shuidiDo()
-
-// funs.initTextBoxList()
-// for(let i = 0; i < textBoxList.length; i++)
-// {
-//     let textBox = textBoxList[i]
-//     let buttonBox = buttonList[i]
-//     let b = textBox.text().match(new RegExp("^逛.*"))
-//     if(b)
-//     {
-//         console.log(textBox.text(), buttonBox ? buttonBox.text() : "没按钮");
-//     }
-// }
-
 
 console.log("完事了")
