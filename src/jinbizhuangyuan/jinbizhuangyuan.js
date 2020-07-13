@@ -64,19 +64,35 @@ funs.initTextBoxList = function()
     let textBoxParent = a[0].parent()
     textBoxList = []
     buttonList = []
+    let textAndButonList = []
     for(let i = 0; i < textBoxParent.childCount(); i++)
     {
         let tbox = textBoxParent.child(i)
-        let tboxSize = tbox.bounds()
-        if(tboxSize.width() > 450)
+        if(tbox.clickable())
         {
-            textBoxList.push(tbox)
-        }
-        if(tboxSize.width() == 186)
-        {
-            buttonList.push(tbox)
+            textAndButonList.push(tbox)
         }
     }
+    for(let i = 0; i < textAndButonList.length; i++)
+    {
+        if(i % 2 == 0)
+        {
+            textBoxList.push(textAndButonList[i])
+        }
+        else
+        {
+            buttonList.push(textAndButonList[i])
+        }
+    }
+}
+
+funs.shuidiButtonCanClick = function (buttonBox)
+{
+    return ! (
+            buttonBox.text() == "领取" ||
+            buttonBox.text() == "已完成" ||
+            buttonBox.text() == "冷却中" 
+            )
 }
 
 funs.hasAllShudiDo = function ()
@@ -95,7 +111,7 @@ funs.hasAllShudiDo = function ()
     for(let i = 0; i < textBoxList.length; i++)
     {
         let buttonBox = buttonList[i]
-        if(buttonBox.text() == "领取")
+        if(!funs.shuidiButtonCanClick(buttonBox))
         {
             countB++
         }
@@ -121,10 +137,7 @@ funs.shuidiDo = function ()
             if(b)
             {
                 console.log(textBox.text().split(" ")[0]);
-                if(
-                    buttonList[i].text() == "领取" ||
-                    buttonList[i].text() == "已完成"
-                ){
+                if(!funs.shuidiButtonCanClick(buttonList[i])){
                     console.log("跳过了")
                     continue
                 }
@@ -142,6 +155,18 @@ funs.shuidiDo = function ()
 
 gotoZhuangyuan()
 funs.shuidiDo()
+
+// funs.initTextBoxList()
+// for(let i = 0; i < textBoxList.length; i++)
+// {
+//     let textBox = textBoxList[i]
+//     let buttonBox = buttonList[i]
+//     let b = textBox.text().match(new RegExp("^逛.*"))
+//     if(b)
+//     {
+//         console.log(textBox.text(), buttonBox ? buttonBox.text() : "没按钮");
+//     }
+// }
 
 
 console.log("完事了")
