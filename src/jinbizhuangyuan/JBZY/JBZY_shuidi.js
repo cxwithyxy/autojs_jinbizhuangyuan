@@ -59,6 +59,15 @@ funs.shuidiButtonCanClick = function (buttonBox)
             buttonBox.text() == "冷却中"
             )
 }
+
+funs.isShuidiRenwuMatch = function (textBox)
+{
+    let str = textBox.text()
+    let c1 = str.match(new RegExp("^逛.*"))
+    let c2 = str.match(new RegExp(".*榜"))
+    let c3 = str.match(new RegExp("^浏览.*"))
+    return c1 || c2 || c3
+}
  
 funs.hasAllShudiDo = function ()
 {
@@ -67,8 +76,7 @@ funs.hasAllShudiDo = function ()
     {
         let textBox = textBoxList[i]
         let buttonBox = buttonList[i]
-        let b = textBox.text().match(new RegExp("^逛.*"))
-        if(b && funs.shuidiButtonCanClick(buttonBox))
+        if(funs.isShuidiRenwuMatch(textBox) && funs.shuidiButtonCanClick(buttonBox))
         {
             return false
         }
@@ -78,7 +86,7 @@ funs.hasAllShudiDo = function ()
  
 funs.shuidiDo = function ()
 {
-    while(true)
+    for(;;)
     {
         funs.openShuidi()
         funs.clickYijianLingshuidi()
@@ -90,8 +98,7 @@ funs.shuidiDo = function ()
         for(let i = 0; i < textBoxList.length; i++)
         {
             let textBox = textBoxList[i]
-            let b = textBox.text().match(new RegExp("^逛.*"))
-            if(b)
+            if(funs.isShuidiRenwuMatch(textBox))
             {
                 console.log(textBox.text().split(" ")[0]);
                 if(!funs.shuidiButtonCanClick(buttonList[i])){

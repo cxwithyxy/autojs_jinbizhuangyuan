@@ -14,7 +14,7 @@ funs.jiaoshui = function ()
 
 funs.loopJiaoshui = function ()
 {
-    while(true)
+    for(;;)
     {
         if(funs.matchImage("targetimage/jinbizhuangyuan/jiaoshuiping_kong.png"))
         {
@@ -37,7 +37,7 @@ funs.loopJiaoshui = function ()
 
 funs.loopToujinbi = function ()
 {
-    while(true)
+    for(;;)
     {
         let toujinbiButton = depth(18).text("偷金币").find()
         console.log("当前偷金币: " + toujinbiButton.length);
@@ -56,7 +56,7 @@ funs.loopToujinbi = function ()
 
 funs.loopFriendsAndDoIt = function ()
 {
-    while(true)
+    for(;;)
     {
         funs.loopToujinbi()
         funs.loopJiaoshui()

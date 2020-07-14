@@ -26,14 +26,18 @@ function main ()
     zhuangyuanGlobal.gotoZhuangyuan()
     zhuanyuanFriendFuns.friendJob()
     
-    zhuangyuanGlobal.gotoZhuangyuan()
-    shuidiFuns.shuidiDo()
+    for(let i = 0; i < 3; i++)
+    {
+        zhuangyuanGlobal.gotoZhuangyuan()
+        console.log("收水滴第 " + (i + 1) + "次")
+        shuidiFuns.shuidiDo()
+    }
 
     device.cancelKeepingAwake()
     console.log("金币庄园任务全部完成了");
 }
 
-while (true)
+for(;;)
 {
     try
     {
