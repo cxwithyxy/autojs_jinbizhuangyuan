@@ -100,9 +100,9 @@ funs.shuidiDo = function ()
                 }
                 buttonList[i].click()
                 console.log("点击了")
-                sleep(30e3)
+                sleep(36e3)
                 back()
-                sleep(3e3)
+                sleep(1e3)
                 break
             }
         }
