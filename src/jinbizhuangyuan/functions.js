@@ -4,12 +4,13 @@ let funs = {}
 
 funs.autoRequestScreenCapture = function ()
 {
-    threads.start(function ()
+    let th1 = threads.start(function ()
     {
         sleep(2e3)
         click(783, 1805)
     })
     requestScreenCapture();
+    th1.isAlive() ? th1.interrupt() : 0;
 }
 
 funs.matchImage = function (imgpath)
