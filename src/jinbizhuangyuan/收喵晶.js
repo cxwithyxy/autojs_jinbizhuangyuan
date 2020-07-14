@@ -74,16 +74,21 @@ funs.clickAllShangjia = function ()
 }
 
 funs.autoRequestScreenCapture()
-console.show()
 
-// funs.backToHomePage()
+console.log("开始收猫晶")
 
-// funs.toMaodian()
+funs.backToHomePage()
 
-// funs.dianGaoshi()
+funs.toMaodian()
 
-// funs.dianLixianShouyi()
+funs.dianGaoshi()
 
-// funs.clickAllShangjia()
+funs.dianLixianShouyi()
 
-console.log("end")
+funs.swipeToCenter()
+
+funs.clickAllShouwan()
+
+funs.clickAllShangjia()
+
+console.log("收猫晶结束了")
