@@ -23,16 +23,38 @@ funs.clickQiandaoPage = function ()
 {
     console.log("进入签到")
     funs.clickAreaByUIObject(text("签到领10元红包").find()[0])
+    sleep(5e3)
+}
+
+funs.clickQiandaoBtn = function ()
+{
+    console.log("点击签到按钮")
+    try
+    {
+        text("立即签到").find()[0].click()
+        console.log("签到成功")
+    }
+    catch(e)
+    {
+        console.log("没有找到签到按钮, 可能已经签到了")
+    }
     sleep(3e3)
 }
 
-funs.clickQiandao = function ()
+function main ()
 {
-
+    funs.unlockScreen()
+    device.keepScreenDim(3600e3)
+    console.show()
+    funs.autoRequestScreenCapture()
+    
+    console.log("开始进行饿了么签到")
+    funs.gotoEle()
+    funs.clickToWode()
+    funs.clickQiandaoPage()
+    funs.clickQiandaoBtn()
+    device.cancelKeepingAwake()
+    console.log("饿了么签到结束了")
 }
 
-console.show()
-funs.autoRequestScreenCapture()
-funs.gotoEle()
-funs.clickToWode()
-funs.clickQiandaoPage()
+main()
