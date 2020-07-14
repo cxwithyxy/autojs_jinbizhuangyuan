@@ -8,6 +8,16 @@ funs.gotoZhuangyuan = function () {
     sleep(1e3)
     desc("领淘金币").find()[0].click()
     sleep(10e3)
+    zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
+    sleep(1e3)
+}
+
+funs.ifNoticeQiaodaoThanClick = function ()
+{
+    if(funs.matchImage("targetimage/jinbizhuangyuan/meiriqiandao.png"))
+    {
+        click(909, 478)
+    }
 }
  
 funs.shoucai = function ()

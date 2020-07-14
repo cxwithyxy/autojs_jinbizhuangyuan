@@ -6,7 +6,7 @@ funs.autoRequestScreenCapture = function ()
 {
     threads.start(function ()
     {
-        sleep(5e3)
+        sleep(2e3)
         click(783, 1805)
     })
     requestScreenCapture();
