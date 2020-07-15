@@ -2,21 +2,43 @@ auto()
 
 let funs = {}
 
+funs.runAfterPrepare = function (callbackfuns)
+{
+    funs.unlockScreen()
+    funs.autoRequestScreenCapture()
+    funs.runDuringScreenOn(callbackfuns)
+}
+
+funs.runDuringScreenOn = function (callbackfuns)
+{
+    device.keepScreenDim(3600e3)
+    callbackfuns()
+    device.cancelKeepingAwake()
+}
+
 funs.autoRequestScreenCapture = function ()
 {
-    threads.start(function ()
+    let th1 = threads.start(function ()
     {
         sleep(2e3)
         click(783, 1805)
     })
     requestScreenCapture();
+    th1.isAlive() ? th1.interrupt() : 0;
 }
 
 funs.matchImage = function (imgpath)
 {
-    let targetImg = images.read(imgpath);
-    let p = images.findImage(captureScreen(), targetImg);
-    return p
+    for(let i = 0; i < 5; i++)
+    {
+        let targetImg = images.read(imgpath);
+        let p = images.findImage(captureScreen(), targetImg, {level: i});
+        if(p)
+        {
+            return p
+        }
+    }
+    return false
 }
 
 funs.clickAreaByImage = function(imgpath, noerror)
