@@ -29,7 +29,7 @@ funs.autoRequestScreenCapture = function ()
 
 funs.matchImage = function (imgpath)
 {
-    for(let i = 0; i < 5; i++)
+    for(let i = 0; i < 2; i++)
     {
         let targetImg = images.read(imgpath);
         let p = images.findImage(captureScreen(), targetImg, {level: i});
