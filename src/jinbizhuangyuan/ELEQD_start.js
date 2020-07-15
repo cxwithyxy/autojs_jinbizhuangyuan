@@ -43,11 +43,6 @@ funs.clickQiandaoBtn = function ()
 
 function main ()
 {
-    funs.unlockScreen()
-    device.keepScreenDim(3600e3)
-    console.show()
-    funs.autoRequestScreenCapture()
-    
     console.log("开始进行饿了么签到")
     funs.gotoEle()
     funs.clickToWode()
@@ -57,4 +52,4 @@ function main ()
     console.log("饿了么签到结束了")
 }
 
-main()
+funs.runAfterPrepare(main)
