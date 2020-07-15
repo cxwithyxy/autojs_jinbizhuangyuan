@@ -9,13 +9,8 @@ let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 function main ()
 {
-    funs.unlockScreen()
-    console.show()
     console.log("金币庄园任务开始搞");
 
-    funs.autoRequestScreenCapture()
-    device.keepScreenDim(3600e3)
-    
     zhuangyuanGlobal.gotoZhuangyuan()
     zhuangyuanGlobal.shoucai()
     zhuangyuanGlobal.qiandao()
@@ -33,7 +28,6 @@ function main ()
         shuidiFuns.shuidiDo()
     }
 
-    device.cancelKeepingAwake()
     console.log("金币庄园任务全部完成了");
 }
 
@@ -41,7 +35,7 @@ for(;;)
 {
     try
     {
-        main()
+        funs.runAfterPrepare(main)
         break
     }
     catch(e)
