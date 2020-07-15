@@ -40,6 +40,7 @@ funs.toMaodian = function ()
 funs.swipeToCenter = function ()
 {
     sleep(1e3)
+    console.log("屏幕往上滑动一点")
     let x = device.width / 2
     let y = device.height / 2
     let yd = device.height * (1 / 5)
@@ -73,22 +74,26 @@ funs.clickAllShangjia = function ()
     }
 }
 
-funs.autoRequestScreenCapture()
 
-console.log("开始收猫晶")
+function main ()
+{
+    console.log("开始收猫晶")
+     
+    funs.backToHomePage()
+     
+    funs.toMaodian()
+     
+    funs.dianGaoshi()
+     
+    funs.dianLixianShouyi()
+     
+    funs.swipeToCenter()
+     
+    funs.clickAllShouwan()
+     
+    funs.clickAllShangjia()
+     
+    console.log("收猫晶结束了")
+}
 
-funs.backToHomePage()
-
-funs.toMaodian()
-
-funs.dianGaoshi()
-
-funs.dianLixianShouyi()
-
-funs.swipeToCenter()
-
-funs.clickAllShouwan()
-
-funs.clickAllShangjia()
-
-console.log("收猫晶结束了")
+funs.runAfterPrepare(main)
