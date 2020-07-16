@@ -100,13 +100,12 @@ funs.shuidiDo = function ()
             let textBox = textBoxList[i]
             if(funs.isShuidiRenwuMatch(textBox))
             {
-                console.log(textBox.text().split(" ")[0]);
                 if(!funs.shuidiButtonCanClick(buttonList[i])){
                     console.log("跳过了")
                     continue
                 }
                 buttonList[i].click()
-                console.log("点击了")
+                console.log("点击了" + textBox.text().split(" ")[0])
                 sleep(36e3)
                 back()
                 sleep(1e3)
