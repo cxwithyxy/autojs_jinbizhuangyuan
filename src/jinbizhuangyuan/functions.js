@@ -1,5 +1,7 @@
 auto()
 
+let TopbarConsole = require("./ui/TopbarConsole.js")
+
 let funs = {}
 
 funs.runAfterPrepare = function (callbackfuns)
@@ -11,9 +13,11 @@ funs.runAfterPrepare = function (callbackfuns)
 
 funs.runDuringScreenOn = function (callbackfuns)
 {
+    TopbarConsole.active()
     device.keepScreenDim(3600e3)
     callbackfuns()
     device.cancelKeepingAwake()
+    TopbarConsole.inactive()
 }
 
 funs.autoRequestScreenCapture = function ()

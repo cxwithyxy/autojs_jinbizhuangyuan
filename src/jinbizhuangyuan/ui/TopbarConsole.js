@@ -33,6 +33,7 @@ funs.active = function ()
 
 funs.inactive = function ()
 {
+    showLog([])
     console.log = oldConsoleLog
 }
 
