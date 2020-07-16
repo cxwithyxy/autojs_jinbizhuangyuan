@@ -1,5 +1,7 @@
 auto()
 
+let TopbarConsole = require("./ui/TopbarConsole.js")
+
 let funs = {}
 
 funs.runAfterPrepare = function (callbackfuns)
@@ -11,9 +13,11 @@ funs.runAfterPrepare = function (callbackfuns)
 
 funs.runDuringScreenOn = function (callbackfuns)
 {
+    TopbarConsole.active()
     device.keepScreenDim(3600e3)
     callbackfuns()
     device.cancelKeepingAwake()
+    TopbarConsole.inactive()
 }
 
 funs.autoRequestScreenCapture = function ()
@@ -27,15 +31,28 @@ funs.autoRequestScreenCapture = function ()
     th1.isAlive() ? th1.interrupt() : 0;
 }
 
+funs.imageFixCurrentScreen = function (imageObject)
+{
+    let baseSize = {w: 1080, h:1920}
+    let currentSize = {w: device.width, h: device.height}
+    if(baseSize.w == currentSize.w && baseSize.h == currentSize.h)
+    {
+        return imageObject
+    }
+    return images.scale(imageObject, currentSize.w / baseSize.w, currentSize.h / baseSize.h)
+}
+
 funs.matchImage = function (imgpath)
 {
+    let targetImg = images.read(imgpath);
+    let screenImage = funs.imageFixCurrentScreen(captureScreen())
     for(let i = 0; i < 2; i++)
     {
-        let targetImg = images.read(imgpath);
-        let p = images.findImage(captureScreen(), targetImg, {level: i});
+        let p = images.findImage(screenImage, targetImg, {level: i});
         if(p)
         {
-            return p
+            let position = {x: p.x, y: p.y, level: i}
+            return position
         }
     }
     return false
@@ -76,16 +93,13 @@ funs.backToHomePage = function ()
     });
     waitForActivity("com.taobao.tao.TBMainActivity")
     sleep(1e3)
-    let homeBtn = images.read("targetimage/home/homebtn.png");
-    let p = images.findImage(captureScreen(), homeBtn);
-    if(p)
+    if(funs.matchImage("targetimage/home/homebtn.png"))
     {
         return
     }
     funs.clickAreaByImage("targetimage/home/homebtnClick.png")
     sleep(1e3)
-    homeBtn = images.read("targetimage/home/homebtnTop.png");
-    p = images.findImage(captureScreen(), homeBtn);
+    let p = funs.matchImage("targetimage/home/homebtnTop.png")
     if(p)
     {
         click(p.x, p.y)
