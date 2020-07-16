@@ -7,7 +7,6 @@ ui.run(function()
 {
     w.setPosition(0, -80)
     w.setSize(-1, 120)
-    w.showingText.setText("" + device.width)
 });
 
 let funs = {}
