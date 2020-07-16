@@ -1,6 +1,6 @@
 let w = floaty.window(
     <frame w="*" h="*">
-        <text id="showingText" bg="#ffffff" w="auto" layout_gravity="center" >悬浮文字</text>
+        <text id="showingText" bg="#ffffff" w="auto" layout_gravity="center" ></text>
     </frame>
 );
 ui.run(function()
