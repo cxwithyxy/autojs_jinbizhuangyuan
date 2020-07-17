@@ -2,7 +2,7 @@ auto()
 
 let funs = require("functions.js");
 
-funs.dianGaoshi = function()
+funs.closeGaoshi = function()
 {
     if(funs.matchImage("targetimage/miaojing/gonggao2.png"))
     {
@@ -12,11 +12,11 @@ funs.dianGaoshi = function()
     }
 }
 
-funs.dianLixianShouyi = function ()
+funs.clickWozhidaole = function ()
 {
     if(funs.clickAreaByImage("targetimage/miaojing/wozhidaole.png", true))
     {
-        console.log("把离线收益点掉了");
+        console.log("点了我知道了按钮");
         sleep(1e3)
     }
 }
@@ -71,6 +71,7 @@ funs.clickAllShangjia = function ()
         }
         click(a.x, a.y)
         funs.clickAreaByImage("targetimage/miaojing/wozhidaole.png", true)
+        funs.clickWozhidaole()
     }
 }
 
@@ -83,9 +84,9 @@ function main ()
      
     funs.toMaodian()
      
-    funs.dianGaoshi()
+    funs.closeGaoshi()
      
-    funs.dianLixianShouyi()
+    funs.clickWozhidaole()
      
     funs.swipeToCenter()
      
