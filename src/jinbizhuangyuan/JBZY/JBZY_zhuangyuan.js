@@ -7,7 +7,7 @@ funs.gotoZhuangyuan = function () {
     funs.backToHomePage()
     sleep(1e3)
     desc("领淘金币").find()[0].click()
-    sleep(10e3)
+    text("偷金币").findOne()
     zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
     sleep(1e3)
 }
