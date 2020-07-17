@@ -6,8 +6,8 @@ let funs = {}
 
 funs.openShuidi = function ()
 {
-    click(960, 1123)
     console.log("点击水滴按钮");
+    text("TB1m6mfx4D1gK0jSZFyXXciOVXa-114-132").find()[0].click()
     textStartsWith("水滴奖励双倍").findOne()
 }
  
