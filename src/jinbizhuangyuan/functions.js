@@ -6,6 +6,7 @@ let funs = {}
 
 funs.runAfterPrepare = function (callbackfuns)
 {
+    setScreenMetrics(1080, 1920);
     funs.unlockScreen()
     funs.autoRequestScreenCapture()
     funs.runDuringScreenOn(callbackfuns)

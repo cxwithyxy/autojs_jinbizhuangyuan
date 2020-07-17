@@ -1,5 +1,4 @@
 auto()
-setScreenMetrics(1080, 1920);
 
 let funs = require("./functions.js")
 let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
