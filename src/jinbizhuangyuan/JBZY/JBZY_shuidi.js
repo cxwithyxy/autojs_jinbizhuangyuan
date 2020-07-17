@@ -8,8 +8,7 @@ funs.openShuidi = function ()
 {
     click(960, 1123)
     console.log("点击水滴按钮");
-    sleep(3e3)
-     
+    textStartsWith("水滴奖励双倍").findOne()
 }
  
 funs.clickYijianLingshuidi = function ()
