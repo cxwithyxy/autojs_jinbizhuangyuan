@@ -2,11 +2,12 @@ auto()
 setScreenMetrics(1080, 1920);
 
 let funs = require("./functions.js")
+let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
 
 funs.gotoEle = function ()
 {
     console.log("进入饿了么")
-    funs.backToHomePage()
+    zhuangyuanGlobal.backToHomePage()
     sleep(1e3)
     desc("饿了么").find()[0].click()
     sleep(10e3)

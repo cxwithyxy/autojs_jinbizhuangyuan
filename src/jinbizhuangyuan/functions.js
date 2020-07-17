@@ -78,35 +78,6 @@ funs.clickAreaByUIObject = function (UIObject)
     click(uiRect.left, uiRect.top)
 }
 
-funs.getLeftBottomButtons = function ()
-{
-    let a = className("android.widget.ListView").depth(10).find()[0]
-    let b = a.children()
-    return b
-}
-
-funs.backToHomePage = function ()
-{
-    app.startActivity({
-        packageName: "com.taobao.taobao",
-        className: "com.taobao.tao.TBMainActivity"
-    });
-    waitForActivity("com.taobao.tao.TBMainActivity")
-    sleep(1e3)
-    if(funs.matchImage("targetimage/home/homebtn.png"))
-    {
-        return
-    }
-    funs.clickAreaByImage("targetimage/home/homebtnClick.png")
-    sleep(1e3)
-    let p = funs.matchImage("targetimage/home/homebtnTop.png")
-    if(p)
-    {
-        click(p.x, p.y)
-        sleep(1e3)
-    }
-}
-
 funs.unlockScreen = function ()
 {
     if(!device.isScreenOn())
