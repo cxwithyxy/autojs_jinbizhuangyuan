@@ -1,6 +1,7 @@
 auto()
 
 let funs = require("functions.js");
+let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
 
 funs.closeGaoshi = function()
 {
@@ -23,7 +24,7 @@ funs.clickWozhidaole = function ()
 
 funs.toMaochao = function ()
 {
-    funs.backToHomePage()
+    zhuangyuanGlobal.backToHomePage()
     funs.clickAreaByImage("targetimage/miaojing/maochao.png")
     waitForActivity("com.taobao.browser.BrowserActivity")
     sleep(3e3)
@@ -80,7 +81,7 @@ function main ()
 {
     console.log("开始收猫晶")
      
-    funs.backToHomePage()
+    zhuangyuanGlobal.backToHomePage()
      
     funs.toMaodian()
      

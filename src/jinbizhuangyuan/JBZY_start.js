@@ -1,5 +1,4 @@
 auto()
-setScreenMetrics(1080, 1920);
 
 let funs = require("./functions.js")
 let zhuangyuanGlobal = require("./JBZY/JBZY_zhuangyuan.js")
@@ -31,17 +30,5 @@ function main ()
     console.log("金币庄园任务全部完成了");
 }
 
-for(;;)
-{
-    try
-    {
-        funs.runAfterPrepare(main)
-        break
-    }
-    catch(e)
-    {
-        console.log(e)
-        console.log("出现错误, 10s后重新运行")
-        sleep(10e3)
-    }
-}
+
+funs.runAfterPrepare(main)
