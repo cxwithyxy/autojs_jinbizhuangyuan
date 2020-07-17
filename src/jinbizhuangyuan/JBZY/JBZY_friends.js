@@ -16,10 +16,6 @@ funs.loopJiaoshui = function ()
 {
     for(;;)
     {
-        if(funs.matchImage("targetimage/jinbizhuangyuan/jiaoshuiping_kong.png"))
-        {
-            break
-        }
         let jiaoshuiButton = text("可浇水").find()
         console.log("当前可浇水: " + jiaoshuiButton.length);
         if(jiaoshuiButton.length == 0)
@@ -28,6 +24,10 @@ funs.loopJiaoshui = function ()
         }
         jiaoshuiButton[0].click()
         sleep(8e3)
+        if(funs.matchImage("targetimage/jinbizhuangyuan/jiaoshuiping_kong.png"))
+        {
+            break
+        }
         funs.jiaoshui()
         sleep(3e3)
         back()

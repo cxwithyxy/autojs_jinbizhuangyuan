@@ -46,14 +46,19 @@ funs.imageFixCurrentScreen = function (imageObject)
 funs.matchImage = function (imgpath)
 {
     let targetImg = images.read(imgpath);
-    let screenImage = funs.imageFixCurrentScreen(captureScreen())
-    for(let i = 0; i < 2; i++)
+    let screenImage = captureScreen()
+    for(let i = 0.9; i >= 0.7; i -= 0.1)
     {
-        let p = images.findImage(screenImage, targetImg, {level: i});
-        if(p)
+        for(let j = 0; j < 2; j++)
         {
-            let position = {x: p.x, y: p.y, level: i}
-            return position
+            // console.log("相似度 " + i + "层级 " + j)
+            let p = images.findImage(screenImage, targetImg, {threshold:i, level: j});
+            if(p)
+            {
+                let position = {x: p.x, y: p.y}
+                return position
+            }
+            sleep(1e3/12)
         }
     }
     return false
@@ -68,15 +73,19 @@ funs.clickAreaByImage = function(imgpath, noerror)
     }
     if(p)
     {
+        setScreenMetrics(device.width, device.height);
         click(p.x, p.y)
+        setScreenMetrics(1080, 1920);
     }
     return p
 }
 
 funs.clickAreaByUIObject = function (UIObject)
 {
+    setScreenMetrics(device.width, device.height);
     let uiRect = UIObject.bounds()
-    click(uiRect.left, uiRect.top)
+    click(uiRect.centerX(), uiRect.centerY())
+    setScreenMetrics(1080, 1920);
 }
 
 funs.unlockScreen = function ()
