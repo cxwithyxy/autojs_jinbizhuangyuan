@@ -2,12 +2,43 @@ auto()
 
 let funs = require("./../functions.js")
 
+funs.backToHomePage = function ()
+{
+    app.startActivity({
+        packageName: "com.taobao.taobao",
+        className: "com.taobao.tao.TBMainActivity"
+    })
+    console.log("等待进入淘宝主页")
+    waitForActivity("com.taobao.tao.TBMainActivity")
+    desc("我的淘宝").findOne()
+    if(funs.matchImage("targetimage/home/homebtn.png"))
+    {
+        return
+    }
+    console.log("当前不在淘宝主页, 尝试回主页")
+    funs.clickAreaByImage("targetimage/home/homebtnClick.png")
+    sleep(1e3)
+    let p = funs.matchImage("targetimage/home/homebtnTop.png")
+    if(p)
+    {
+        click(p.x, p.y)
+        sleep(1e3)
+    }
+}
+
+funs.getLeftBottomButtons = function ()
+{
+    let a = className("android.widget.ListView").depth(10).find()[0]
+    let b = a.children()
+    return b
+}
+
 funs.gotoZhuangyuan = function () {
     console.log("进入金币庄园")
     funs.backToHomePage()
     sleep(1e3)
     desc("领淘金币").find()[0].click()
-    sleep(10e3)
+    text("偷金币").findOne()
     zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
     sleep(1e3)
 }
