@@ -2,12 +2,12 @@ auto()
 
 let zhuangyuanGlobal = require("./JBZY_zhuangyuan.js")
 
-let funs = {}
+let funs = require("./../functions.js")
 
 funs.openShuidi = function ()
 {
     console.log("点击水滴按钮");
-    text("TB1m6mfx4D1gK0jSZFyXXciOVXa-114-132").find()[0].click()
+    funs.clickAreaByImage("targetimage/jinbizhuangyuan/shuidiBtn.png")
     textStartsWith("水滴奖励双倍").findOne()
 }
  
