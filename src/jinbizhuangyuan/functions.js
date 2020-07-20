@@ -30,6 +30,7 @@ funs.autoRequestScreenCapture = function ()
     })
     requestScreenCapture();
     th1.isAlive() ? th1.interrupt() : 0;
+    sleep(1e3)
 }
 
 funs.imageFixCurrentScreen = function (imageObject)
