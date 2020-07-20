@@ -23,7 +23,7 @@ funs.clickQiandaoPage = function ()
 {
     console.log("进入签到")
     funs.clickAreaByUIObject(text("签到领10元红包").find()[0])
-    sleep(5e3)
+    sleep(20e3)
 }
 
 funs.clickQiandaoBtn = function ()
