@@ -25,6 +25,7 @@ funs.clickWozhidaole = function ()
 funs.toMaochao = function ()
 {
     zhuangyuanGlobal.backToHomePage()
+    console.log("进入猫超")
     funs.clickAreaByImage("targetimage/miaojing/maochao.png")
     waitForActivity("com.taobao.browser.BrowserActivity")
     sleep(3e3)
@@ -33,6 +34,7 @@ funs.toMaochao = function ()
 funs.toMaodian = function ()
 {
     funs.toMaochao()
+    console.log("进入猫店")
     funs.clickAreaByImage("targetimage/miaojing/miaodianBtn.png")
     waitForActivity("com.taobao.browser.exbrowser.BrowserUpperActivity")
     sleep(15e3)
@@ -86,7 +88,7 @@ function main ()
      
     funs.toMaodian()
      
-    funs.closeGaoshi()
+    // funs.closeGaoshi()
      
     funs.clickWozhidaole()
      
