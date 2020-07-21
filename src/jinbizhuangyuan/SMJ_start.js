@@ -42,10 +42,11 @@ funs.swipeToCenter = function ()
 {
     sleep(1e3)
     console.log("屏幕往上滑动一点")
-    let x = device.width / 2
-    let y = device.height / 2
-    let yd = device.height * (1 / 5)
+    let x = funs.getDeviceWidth() / 2
+    let y = funs.getDeviceHeight() / 2
+    let yd = funs.getDeviceHeight() * (1 / 5)
     swipe(x, y, x, y - yd, 500)
+    sleep(1e3)
 }
 
 funs.clickAllShouwan = function ()
