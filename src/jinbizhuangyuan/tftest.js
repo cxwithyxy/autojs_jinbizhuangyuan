@@ -4,42 +4,56 @@ importClass(android.webkit.WebView)
 importClass(android.webkit.WebChromeClient)
 importClass(android.webkit.WebResourceResponse)
 importClass(android.webkit.WebViewClient)
+importClass(android.webkit.JavascriptInterface)
 
 let w = floaty.window(
-    <linear w="*" h="500">
+    <linear w="*" h="*">
         <webview id="webview" h="*" w="*" />
     </linear>
 );
 ui.run(function()
 {
-    w.setPosition(0, -80)
-    w.setSize(-1, 120)
+    w.setPosition(0, 0)
+    w.setSize(-1, 500)
     let webview = w.webview
     let set = webview.getSettings()
     set.setAllowFileAccessFromFileURLs(false)
     set.setAllowUniversalAccessFromFileURLs(false)
     set.setSupportZoom(false)
     set.setJavaScriptEnabled(true)
-     
-    // 这里的lesson是开始时创建的文件夹名，请根据自己的情况修改
-    webview.loadUrl('http://baidu.com')
-     
-    var webcc = new JavaAdapter(WebChromeClient, {
-        onJsPrompt: function (webView, url, fnName, defaultValue, jsPromptResult) {
+    var webcc = new JavaAdapter(WebChromeClient,
+    {
+        onJsPrompt: function (webView, url, fnName, defaultValue, jsPromptResult)
+        {
             toast(fnName + ' ' + defaultValue)
-     
-            // 这段代码是必要的，否则会弹出prompt，阻塞界面。
             jsPromptResult.confirm()
             return true
+        },
+        onJsAlert: function (webView, url, defaultValue, jsPromptResult)
+        {
+            toast(defaultValue)
         }
     })
     webview.setWebChromeClient(webcc)
+    // let bb = function (){}
+    // bb.prototype.a = 333
+    let bb = {a: function (){alert("bb.a")}}
+    // var javascriptInterface = new JavaAdapter(java.lang.Object, JavascriptInterface, bb)
+    webview.addJavascriptInterface(bb, "bb")
+    webview.loadUrl('file:///' + engines.myEngine().cwd() + "/tensorflow/index.html")
+    setTimeout(function ()
+    {
+        webview.evaluateJavascript(";cc();", function (v)
+        {
+            console.log(v)
+        })
+    },1e3)
     
 });
 
 
 
-setInterval(function ()
+setTimeout(function ()
 {
     console.log(1)
-}, 1e3)
+}, 3e3)
