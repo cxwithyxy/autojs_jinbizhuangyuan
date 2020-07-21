@@ -40,6 +40,8 @@ ui.run(function()
     let bb = {a: function (){alert("bb.a")}}
     // var javascriptInterface = new JavaAdapter(java.lang.Object, JavascriptInterface, bb)
     webview.addJavascriptInterface(bb, "bb")
+    // console.log(org.mozilla.javascript.annotations)
+    console.log(javax.websocket)
     webview.loadUrl('file:///' + engines.myEngine().cwd() + "/tensorflow/index.html")
     setTimeout(function ()
     {
