@@ -41,11 +41,11 @@ ui.run(function()
     // var javascriptInterface = new JavaAdapter(java.lang.Object, JavascriptInterface, bb)
     webview.addJavascriptInterface(bb, "bb")
     // console.log(org.mozilla.javascript.annotations)
-    console.log(javax.websocket)
+    // console.log(javax.websocket)
     webview.loadUrl('file:///' + engines.myEngine().cwd() + "/tensorflow/index.html")
     setTimeout(function ()
     {
-        webview.evaluateJavascript(";cc();", function (v)
+        webview.evaluateJavascript("tf.tensor([1, 2, 3, 4])", function (v)
         {
             console.log(v)
         })
