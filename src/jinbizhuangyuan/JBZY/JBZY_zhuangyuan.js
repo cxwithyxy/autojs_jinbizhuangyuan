@@ -41,6 +41,7 @@ funs.gotoZhuangyuan = function () {
     text("偷金币").findOne()
     zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
     sleep(1e3)
+    funs.shoucai()
 }
 
 funs.ifNoticeQiaodaoThanClick = function ()

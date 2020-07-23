@@ -11,7 +11,6 @@ function main ()
     console.log("金币庄园任务开始搞");
 
     zhuangyuanGlobal.gotoZhuangyuan()
-    zhuangyuanGlobal.shoucai()
     zhuangyuanGlobal.qiandao()
     
     zhuangyuanGlobal.gotoZhuangyuan()
