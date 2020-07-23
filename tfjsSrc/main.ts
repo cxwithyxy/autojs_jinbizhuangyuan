@@ -23,7 +23,7 @@ import * as tf from "@tensorflow/tfjs";
     let model = tf.sequential();
 
     model.add(tf.layers.dense({inputShape: [1], units: 1}));
-    // model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
+    model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
     model.add(tf.layers.dense({units: 1}));
 
     // 训练数据
@@ -73,7 +73,7 @@ import * as tf from "@tensorflow/tfjs";
         metrics: ['mse'],
     });
 
-    const batchSize = 100;
+    const batchSize = 32;
     const epochs = 1000;
 
     normalizedInputs.print()
@@ -86,7 +86,7 @@ import * as tf from "@tensorflow/tfjs";
             // onEpochEnd: (epoch, log) => console.log(`Epoch ${epoch}: loss = ${log.loss}`)
         }
     });
-    let xs = tf.tensor1d([1,0,9,50,88])
+    let xs = tf.tensor1d([99,0,9,50,88])
     let xss = xs.reshape([5, 1]);
     let xsss = xss.div(100)
     const preds = <tf.Tensor>model.predict(xsss);
