@@ -23,27 +23,28 @@ import * as tf from "@tensorflow/tfjs";
     let model = tf.sequential();
 
     model.add(tf.layers.dense({inputShape: [1], units: 1}));
+    // model.add(tf.layers.dense({units: 50, activation: 'sigmoid'}));
     model.add(tf.layers.dense({units: 1}));
 
     // 训练数据
     let trainData = []
-    for(let i = 0; i != 10; ++i)
+    for(let i = 0; i != 100; ++i)
     {
-        let horsepower = Math.round(Math.random() * 100)
+        let horsepower = /* Math.round(Math.random() * 100) */ i
         let dataOne = {
-            "mpg":horsepower + 3,
             "horsepower":horsepower,
+            "mpg":3 * horsepower + 3,
         }
         trainData.push(dataOne)
     }
 
-    tf.util.shuffle(trainData);
     console.log(trainData);
+    tf.util.shuffle(trainData);
 
     const inputs = trainData.map(d => d.horsepower)
     const labels = trainData.map(d => d.mpg)
-    console.log(inputs);
-    console.log(labels);
+    // console.log(inputs);
+    // console.log(labels);
 
     const inputTensor = tf.tensor2d(inputs, [inputs.length, 1]);
     const labelTensor = tf.tensor2d(labels, [labels.length, 1]);
@@ -53,8 +54,8 @@ import * as tf from "@tensorflow/tfjs";
     const labelMax = labelTensor.max();
     const labelMin = labelTensor.min();
 
-    const normalizedInputs = inputTensor.sub(inputMin).div(inputMax.sub(inputMin));
-    const normalizedLabels = labelTensor.sub(labelMin).div(labelMax.sub(labelMin));
+    const normalizedInputs = inputTensor.div(100);
+    const normalizedLabels = labelTensor.div(100);
 
     let ttdata = {
         inputs: normalizedInputs,
@@ -72,15 +73,28 @@ import * as tf from "@tensorflow/tfjs";
         metrics: ['mse'],
     });
 
-    const batchSize = 32;
-    const epochs = 50;
+    const batchSize = 100;
+    const epochs = 1000;
 
+    normalizedInputs.print()
+    normalizedLabels.print()
     
-    model.fit(normalizedInputs, normalizedLabels, {
+    await model.fit(normalizedInputs, normalizedLabels, {
         batchSize: batchSize,
         epochs: epochs,
         callbacks: {
-            onEpochEnd: (epoch, log) => console.log(`Epoch ${epoch}: loss = ${log.loss}`)
+            // onEpochEnd: (epoch, log) => console.log(`Epoch ${epoch}: loss = ${log.loss}`)
         }
     });
+    let xs = tf.tensor1d([1,0,9,50,88])
+    let xss = xs.reshape([5, 1]);
+    let xsss = xss.div(100)
+    const preds = <tf.Tensor>model.predict(xsss);
+    const unNormPreds = preds.mul(100);
+    let xList = xss.dataSync()
+    let pList = unNormPreds.dataSync()
+    for(let i in xList)
+    {
+        console.log(xList[i], pList[i]);
+    }
 })()
