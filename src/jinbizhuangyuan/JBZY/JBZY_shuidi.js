@@ -65,7 +65,8 @@ funs.isShuidiRenwuMatch = function (textBox)
     let c1 = str.match(new RegExp("^逛.*"))
     let c2 = str.match(new RegExp(".*榜"))
     let c3 = str.match(new RegExp("^浏览.*"))
-    return c1 || c2 || c3
+    let c4 = str.match(new RegExp("^每日来访.*"))
+    return c1 || c2 || c3 || c4
 }
  
 funs.hasAllShudiDo = function ()
