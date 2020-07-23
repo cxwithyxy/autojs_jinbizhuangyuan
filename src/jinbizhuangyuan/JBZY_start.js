@@ -11,7 +11,6 @@ function main ()
     console.log("金币庄园任务开始搞");
 
     zhuangyuanGlobal.gotoZhuangyuan()
-    zhuangyuanGlobal.shoucai()
     zhuangyuanGlobal.qiandao()
     
     zhuangyuanGlobal.gotoZhuangyuan()
@@ -20,12 +19,15 @@ function main ()
     zhuangyuanGlobal.gotoZhuangyuan()
     zhuanyuanFriendFuns.friendJob()
     
-    for(let i = 0; i < 3; i++)
+    for(let i = 0; i < 2; i++)
     {
         zhuangyuanGlobal.gotoZhuangyuan()
         console.log("收水滴第 " + (i + 1) + "次")
         shuidiFuns.shuidiDo()
     }
+
+    zhuangyuanGlobal.gotoZhuangyuan()
+    shuidiFuns.lingquShuidi()
 
     console.log("金币庄园任务全部完成了");
 }
