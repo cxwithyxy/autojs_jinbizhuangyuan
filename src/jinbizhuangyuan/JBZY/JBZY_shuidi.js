@@ -83,13 +83,20 @@ funs.hasAllShudiDo = function ()
     }
     return true
 }
- 
+
+funs.lingquShuidi = function ()
+{
+    funs.openShuidi()
+    console.log("开始领取水滴");
+    funs.clickYijianLingshuidi()
+    console.log("领取水滴结束了");
+}
+
 funs.shuidiDo = function ()
 {
     for(;;)
     {
         funs.openShuidi()
-        funs.clickYijianLingshuidi()
         funs.initTextBoxList()
         if(funs.hasAllShudiDo())
         {
