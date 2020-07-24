@@ -11,11 +11,14 @@ let w = floaty.window(
         <webview id="webview" h="*" w="*" />
     </linear>
 );
+
+let webview
+
 ui.run(function()
 {
     w.setPosition(-1080, 0)
     w.setSize(-1, -1)
-    let webview = w.webview
+    webview = w.webview
     let set = webview.getSettings()
     set.setAllowFileAccessFromFileURLs(false)
     set.setAllowUniversalAccessFromFileURLs(false)
@@ -36,12 +39,15 @@ ui.run(function()
     })
     webview.setWebChromeClient(webcc)
     webview.loadUrl('file:///' + engines.myEngine().cwd() + "/cronosjs/index.html")
-    setInterval(function ()
+});
+
+setInterval(function ()
+{
+    ui.run(function ()
     {
-        webview.evaluateJavascript("new Date()", function (v)
+        webview.evaluateJavascript("moment().format()", function (v)
         {
             console.log(v)
         })
-    },1e3)
-    
-});
+    })
+},1e3)
