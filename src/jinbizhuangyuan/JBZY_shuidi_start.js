@@ -8,17 +8,8 @@ let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 function main ()
 {
-    console.log("金币庄园任务开始搞");
+    console.log("金币庄园水滴任务开始搞");
 
-    zhuangyuanGlobal.gotoZhuangyuan()
-    zhuangyuanGlobal.qiandao()
-    
-    zhuangyuanGlobal.gotoZhuangyuan()
-    haodianFuns.haodianJob()
-
-    zhuangyuanGlobal.gotoZhuangyuan()
-    zhuanyuanFriendFuns.friendJob()
-    
     for(let i = 0; i < 2; i++)
     {
         zhuangyuanGlobal.gotoZhuangyuan()
@@ -29,7 +20,7 @@ function main ()
     zhuangyuanGlobal.gotoZhuangyuan()
     shuidiFuns.lingquShuidi()
 
-    console.log("金币庄园任务全部完成了");
+    console.log("金币庄园水滴任务全部完成了");
 }
 
 

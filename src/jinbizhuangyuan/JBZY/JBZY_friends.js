@@ -60,9 +60,11 @@ funs.loopFriendsAndDoIt = function ()
     {
         funs.loopToujinbi()
         funs.loopJiaoshui()
-        console.log("加载更多好友");
         try
         {
+            let pageText = funs.getCurrentPageText()
+            let a = pageText.match(new RegExp("还有[0-9]*个好友可偷金币"))
+            console.log(a[0]);
             text("加载更多好友").find()[0].click()
         }
         catch(e)

@@ -138,4 +138,15 @@ funs.unlockScreen = function ()
     }
 }
 
+funs.getCurrentPageText = function ()
+{
+    let a = textMatches(new RegExp(".*")).find()
+    let text = ""
+    for(let i = 0; i != a.length; ++i)
+    {
+        text += a[i].text()
+    }
+    return text
+}
+
 module.exports = funs
