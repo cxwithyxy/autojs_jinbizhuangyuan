@@ -6,9 +6,16 @@
   "author": "chenxuan <523764720@qq.com>",
   "license": "MIT",
   "devDependencies": {
-    "autojs_dev_tool_server": "https://github.com/cxwithyxy/autojs_dev_tool/releases/download/v0.20200703144605/autojsserver.tgz"
+    "autojs_dev_tool_server": "https://github.com/cxwithyxy/autojs_dev_tool/releases/download/v0.20200703144605/autojsserver.tgz",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.0",
+    "webpack-cli": "^3.3.12"
   },
   "scripts": {
     "wjs": "yarn autojsserver src"
+  },
+  "dependencies": {
+    "cronosjs": "^1.6.1",
+    "moment": "^2.27.0"
   }
 }
