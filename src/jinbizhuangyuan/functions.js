@@ -76,7 +76,7 @@ funs.matchImage = function (imgpath)
 {
     let targetImg = images.read(imgpath);
     let screenImage = captureScreen()
-    for(let i = 0.9; i >= 0.7; i -= 0.1)
+    for(let i = 0.9; i >= 0.5; i -= 0.1)
     {
         for(let j = 0; j < 2; j++)
         {
