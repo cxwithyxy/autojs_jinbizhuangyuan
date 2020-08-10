@@ -64,7 +64,7 @@ funs.autoRequestScreenCapture = function ()
 funs.imageFixCurrentScreen = function (imageObject)
 {
     let baseSize = {w: 1080, h:1920}
-    let currentSize = {w: device.width, h: device.height}
+    let currentSize = {w: funs.getDeviceWidth(), h: funs.getDeviceHeight()}
     if(baseSize.w == currentSize.w && baseSize.h == currentSize.h)
     {
         return imageObject
@@ -102,7 +102,7 @@ funs.clickAreaByImage = function(imgpath, noerror)
     }
     if(p)
     {
-        setScreenMetrics(device.width, device.height);
+        setScreenMetrics(funs.getDeviceWidth(), funs.getDeviceHeight());
         click(p.x, p.y)
         setScreenMetrics(1080, 1920);
     }
@@ -111,7 +111,7 @@ funs.clickAreaByImage = function(imgpath, noerror)
 
 funs.clickAreaByUIObject = function (UIObject)
 {
-    setScreenMetrics(device.width, device.height);
+    setScreenMetrics(funs.getDeviceWidth(), funs.getDeviceHeight());
     let uiRect = UIObject.bounds()
     click(uiRect.centerX(), uiRect.centerY())
     setScreenMetrics(1080, 1920);
