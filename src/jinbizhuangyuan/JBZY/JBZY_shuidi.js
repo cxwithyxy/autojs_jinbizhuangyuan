@@ -6,9 +6,9 @@ let funs = require("./../functions.js")
 
 funs.openShuidi = function ()
 {
-    console.log("点击水滴按钮");
-    funs.clickAreaByImage("targetimage/jinbizhuangyuan/shuidiBtn.png")
-    textStartsWith("水滴奖励双倍").findOne()
+    console.log("点击赚金币按钮");
+    text("赚金币").findOne().click()
+    textStartsWith("做任务赚金币").findOne()
 }
  
 funs.clickYijianLingshuidi = function ()
