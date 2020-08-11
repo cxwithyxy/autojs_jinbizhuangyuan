@@ -13,7 +13,7 @@ function main ()
     for(let i = 0; i < 2; i++)
     {
         zhuangyuanGlobal.gotoZhuangyuan()
-        zhuangyuanGlobal.qiandao()
+        // zhuangyuanGlobal.qiandao()
     }
     
     console.log("金币庄园签到全部完成了");
