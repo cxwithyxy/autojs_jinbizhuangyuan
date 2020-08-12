@@ -21,42 +21,29 @@ funs.clickYijianLingshuidi = function ()
  
 let textBoxList = []
 let buttonList = []
- 
+
+let renwuList
+
+funs.getRenwuWordBox = function(renwuBox)
+{
+    return funs.findInUIObjectWithTextMatches(renwuBox, /（[0-9]\/[0-9]）/)[0]
+}
+
+funs.getRenwuButton = function(renwuBox)
+{
+    return renwuBox.children()[1]
+}
+
 funs.initTextBoxList = function()
 {
-    let a = textMatches(new RegExp("^逛.*")).find()
-    let textBoxParent = a[0].parent()
-    textBoxList = []
-    buttonList = []
-    let textAndButonList = []
-    for(let i = 0; i < textBoxParent.childCount(); i++)
-    {
-        let tbox = textBoxParent.child(i)
-        if(tbox.clickable())
-        {
-            textAndButonList.push(tbox)
-        }
-    }
-    for(let i = 0; i < textAndButonList.length; i++)
-    {
-        if(i % 2 == 0)
-        {
-            textBoxList.push(textAndButonList[i])
-        }
-        else
-        {
-            buttonList.push(textAndButonList[i])
-        }
-    }
+    let a = className("android.widget.ListView").depth(13).find()[0]
+    renwuList = a.children()
 }
  
 funs.shuidiButtonCanClick = function (buttonBox)
 {
-    return ! (
-            buttonBox.text() == "领取" ||
-            buttonBox.text() == "已完成" ||
-            buttonBox.text() == "冷却中"
-            )
+    let buttonBoxText = buttonBox.text()
+    return /去完成/.test(buttonBoxText)
 }
 
 funs.isShuidiRenwuMatch = function (textBox)
@@ -72,10 +59,10 @@ funs.isShuidiRenwuMatch = function (textBox)
 funs.hasAllShudiDo = function ()
 {
      
-    for(let i = 0; i < textBoxList.length; i++)
+    for(let i = 0; i < renwuList.length; i++)
     {
-        let textBox = textBoxList[i]
-        let buttonBox = buttonList[i]
+        let textBox = funs.getRenwuWordBox(renwuList[i])
+        let buttonBox = funs.getRenwuButton(renwuList[i])
         if(funs.isShuidiRenwuMatch(textBox) && funs.shuidiButtonCanClick(buttonBox))
         {
             return false
@@ -102,18 +89,19 @@ funs.shuidiDo = function ()
         {
             break
         }
-        for(let i = 0; i < textBoxList.length; i++)
+        for(let i = 0; i < renwuList.length; i++)
         {
-            let textBox = textBoxList[i]
+            let textBox = funs.getRenwuWordBox(renwuList[i])
+            let buttonBox = funs.getRenwuButton(renwuList[i])
             if(funs.isShuidiRenwuMatch(textBox))
             {
-                if(!funs.shuidiButtonCanClick(buttonList[i])){
+                if(!funs.shuidiButtonCanClick(buttonBox)){
                     console.log("跳过了")
                     continue
                 }
-                buttonList[i].click()
+                buttonBox.click()
                 console.log("点击了" + textBox.text().split(" ")[0])
-                sleep(37e3)
+                sleep(17e3)
                 break
             }
         }
