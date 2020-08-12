@@ -52,7 +52,7 @@ funs.isShuidiRenwuMatch = function (textBox)
     let str = textBox.text()
     let c1 = str.match(new RegExp("^逛.*"))
     let c2 = str.match(new RegExp(".*榜"))
-    let c3 = str.match(new RegExp("^浏览.*"))
+    let c3 = str.match(new RegExp("^看免费小说.*"))
     let c4 = str.match(new RegExp("^每日来访.*"))
     return c1 || c2 || c3 || c4
 }
@@ -75,9 +75,9 @@ funs.hasAllShudiDo = function ()
 funs.lingquShuidi = function ()
 {
     funs.openShuidi()
-    console.log("开始领取水滴");
+    console.log("开始领取能量");
     funs.clickYijianLingshuidi()
-    console.log("领取水滴结束了");
+    console.log("领取能量结束了");
 }
 
 funs.shuidiDo = function ()

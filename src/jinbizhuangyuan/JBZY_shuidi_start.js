@@ -13,7 +13,7 @@ function main ()
     for(let i = 0; i < 2; i++)
     {
         zhuangyuanGlobal.gotoZhuangyuan()
-        console.log("收水滴第 " + (i + 1) + "次")
+        console.log("赚金币任务第 " + (i + 1) + "次")
         shuidiFuns.shuidiDo()
     }
 
