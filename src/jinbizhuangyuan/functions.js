@@ -149,4 +149,26 @@ funs.getCurrentPageText = function ()
     return text
 }
 
+funs.findInUIObjectWithTextMatches = function (UIObject, reg)
+{
+    let sons = UIObject.children()
+    let resultList = []
+    for(let i = 0; i != sons.length; i++)
+    {
+        if(reg.test(sons[i].text()))
+        {
+            resultList.push(sons[i])
+        }
+        if(sons[i].children().length != 0)
+        {
+            let sonsResultList = funs.findInUIObjectWithTextMatches(sons[i], reg)
+            if(sonsResultList.length != 0)
+            {
+                resultList = resultList.concat(sonsResultList)
+            }
+        }
+    }
+    return resultList
+}
+
 module.exports = funs
