@@ -9,6 +9,7 @@ funs.openShuidi = function ()
     console.log("点击赚金币按钮");
     text("赚金币").findOne().click()
     textStartsWith("做任务赚金币").findOne()
+    sleep(5e3)
 }
  
 funs.clickYijianLingshuidi = function ()
@@ -101,7 +102,7 @@ funs.shuidiDo = function ()
                 }
                 buttonBox.click()
                 console.log("点击了" + textBox.text().split(" ")[0])
-                sleep(17e3)
+                sleep(25e3)
                 break
             }
         }
