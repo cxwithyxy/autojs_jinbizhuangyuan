@@ -68,11 +68,14 @@ funs.heliClick = function ()
     console.log("开始点击合力按钮");
     for(;;)
     {
-        if(!funs.clickAreaByImage("targetimage/jinbixiaozhen/heli.png" ,true))
+        if(funs.clickAreaByImage("targetimage/jinbixiaozhen/heli.png" ,true))
         {
-            break;
+            sleep(5e3)
         }
-        sleep(1e3)
+        else
+        {
+            break
+        }
     }
     console.log("点击合力按钮结束");
 }
