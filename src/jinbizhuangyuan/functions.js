@@ -149,19 +149,20 @@ funs.getCurrentPageText = function ()
     return text
 }
 
-funs.findInUIObjectWithTextMatches = function (UIObject, reg)
+funs.findInUIObjectWithTextMatches = function (UIObject, reg, textFunctionName)
 {
     let sons = UIObject.children()
     let resultList = []
+    textFunctionName = textFunctionName || "text"
     for(let i = 0; i != sons.length; i++)
     {
-        if(reg.test(sons[i].text()))
+        if(reg.test(sons[i][textFunctionName]()))
         {
             resultList.push(sons[i])
         }
         if(sons[i].children().length != 0)
         {
-            let sonsResultList = funs.findInUIObjectWithTextMatches(sons[i], reg)
+            let sonsResultList = funs.findInUIObjectWithTextMatches(sons[i], reg, textFunctionName)
             if(sonsResultList.length != 0)
             {
                 resultList = resultList.concat(sonsResultList)
