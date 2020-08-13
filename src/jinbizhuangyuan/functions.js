@@ -64,7 +64,7 @@ funs.autoRequestScreenCapture = function ()
 funs.imageFixCurrentScreen = function (imageObject)
 {
     let baseSize = {w: 1080, h:1920}
-    let currentSize = {w: device.width, h: device.height}
+    let currentSize = {w: funs.getDeviceWidth(), h: funs.getDeviceHeight()}
     if(baseSize.w == currentSize.w && baseSize.h == currentSize.h)
     {
         return imageObject
@@ -102,7 +102,7 @@ funs.clickAreaByImage = function(imgpath, noerror)
     }
     if(p)
     {
-        setScreenMetrics(device.width, device.height);
+        setScreenMetrics(funs.getDeviceWidth(), funs.getDeviceHeight());
         click(p.x, p.y)
         setScreenMetrics(1080, 1920);
     }
@@ -111,7 +111,7 @@ funs.clickAreaByImage = function(imgpath, noerror)
 
 funs.clickAreaByUIObject = function (UIObject)
 {
-    setScreenMetrics(device.width, device.height);
+    setScreenMetrics(funs.getDeviceWidth(), funs.getDeviceHeight());
     let uiRect = UIObject.bounds()
     click(uiRect.centerX(), uiRect.centerY())
     setScreenMetrics(1080, 1920);
@@ -147,6 +147,29 @@ funs.getCurrentPageText = function ()
         text += a[i].text()
     }
     return text
+}
+
+funs.findInUIObjectWithTextMatches = function (UIObject, reg, textFunctionName)
+{
+    let sons = UIObject.children()
+    let resultList = []
+    textFunctionName = textFunctionName || "text"
+    for(let i = 0; i != sons.length; i++)
+    {
+        if(reg.test(sons[i][textFunctionName]()))
+        {
+            resultList.push(sons[i])
+        }
+        if(sons[i].children().length != 0)
+        {
+            let sonsResultList = funs.findInUIObjectWithTextMatches(sons[i], reg, textFunctionName)
+            if(sonsResultList.length != 0)
+            {
+                resultList = resultList.concat(sonsResultList)
+            }
+        }
+    }
+    return resultList
 }
 
 module.exports = funs

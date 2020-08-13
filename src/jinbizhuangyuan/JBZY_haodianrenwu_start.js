@@ -10,8 +10,11 @@ function main ()
 {
     console.log("金币庄园好店任务开始搞");
 
-    zhuangyuanGlobal.gotoZhuangyuan()
-    haodianFuns.haodianJob()
+    for(let i = 0; i < 2; i++)
+    {
+        zhuangyuanGlobal.gotoZhuangyuan()
+        haodianFuns.haodianJob()
+    }
 
     console.log("金币庄园好店任务全部完成了");
 }

@@ -8,15 +8,16 @@ let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 function main ()
 {
-    console.log("金币庄园签到开始搞");
+    console.log("金币小镇签到开始搞");
 
-    for(let i = 0; i < 2; i++)
+    for(let i = 0; i < 1; i++)
     {
         zhuangyuanGlobal.gotoZhuangyuan()
-        zhuangyuanGlobal.qiandao()
+        zhuangyuanGlobal.heliClick()
+        // zhuangyuanGlobal.qiandao()
     }
     
-    console.log("金币庄园签到全部完成了");
+    console.log("金币小镇签到全部完成了");
 }
 
 

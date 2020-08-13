@@ -4,30 +4,22 @@ let funs = require("./../functions.js")
 
 funs.haodianrenwuDo = function()
 {
-    let a = desc("关注 +10金币").find()
-    console.log("可关注的: " + a.length)
-    for(let i = 0; i < a.length; i++)
+    let topBox = depth(0).find()[0]
+    let buttonList = funs.findInUIObjectWithTextMatches(topBox, /逛10秒/, "desc")
+    for(let i = 0; i != buttonList.length; i++)
     {
-        a[i].parent().click()
-        sleep(300)
-    }
-    scrollDown()
-    sleep(300)
-    a = desc("签到 +5金币").find()
-    console.log("可签到的: " + a.length)
-    for(let i = 0; i < a.length; i++)
-    {
-        a[i].parent().click()
-        sleep(3e3)
+        console.log("浏览好店 " + (i + 1) + "/" + buttonList.length)
+        buttonList[i].parent().click()
+        sleep(15e3)
         back()
-        sleep(1e3)
+        sleep(5e3)
     }
-    console.log("好店任务完成了")
 }
 
 funs.gotoHaodian = function ()
 {
-    funs.clickAreaByUIObject(funs.getLeftBottomButtons()[0])
+    funs.clickAreaByImage("targetimage/jinbixiaozhen/guangdianpu.png")
+    desc("浏览好店送金币").findOne()
     sleep(3e3)
 }
 
