@@ -4,14 +4,14 @@
 
 ## 功能说明
 
-| 功能                   | 入口文件                   |
-| ---------------------- | -------------------------- |
-| 淘宝中饿了么签到       | ELEQD_start.js             |
-| 金币庄园好友偷金币浇水 | JBZY_toujinbi_start.js     |
-| 金币庄园做水滴任务     | JBZY_shuidi_start.js       |
-| 金币庄园每日签到       | JBZY_qiandao_start.js      |
-| 金币庄园好店任务       | JBZY_haodianrenwu_start.js |
-| 天猫超市收猫晶         | SMJ_start.js               |
+| 功能               | 入口文件                   |
+| ------------------ | -------------------------- |
+| 淘宝中饿了么签到   | ELEQD_start.js             |
+| 金币小镇帮好友     | JBZY_toujinbi_start.js     |
+| 金币小镇赚金币能量 | JBZY_shuidi_start.js       |
+| 金币小镇每日签到   | JBZY_qiandao_start.js      |
+| 金币小镇好店任务   | JBZY_haodianrenwu_start.js |
+| 天猫超市收猫晶     | SMJ_start.js               |
 
 ## 更新版本特性说明
 
