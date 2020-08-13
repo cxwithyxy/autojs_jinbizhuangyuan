@@ -8,12 +8,12 @@ let shuidiFuns = require("./JBZY/JBZY_shuidi.js")
 
 function main ()
 {
-    console.log("金币庄园好友偷金币浇水开始搞");
+    console.log("金币庄园帮好友开始搞");
 
     zhuangyuanGlobal.gotoZhuangyuan()
     zhuanyuanFriendFuns.friendJob()
     
-    console.log("金币庄园好友偷金币浇水全部完成了");
+    console.log("金币庄园帮好友全部完成了");
 }
 
 

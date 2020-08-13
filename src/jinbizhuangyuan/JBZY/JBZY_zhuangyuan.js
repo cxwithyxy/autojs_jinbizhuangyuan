@@ -38,9 +38,10 @@ funs.gotoZhuangyuan = function () {
     funs.backToHomePage()
     sleep(1e3)
     desc("领淘金币").find()[0].click()
-    text("偷金币").findOne()
-    zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
-    sleep(1e3)
+    text("赚金币").findOne()
+    console.log("已进入金币庄园")
+    // zhuangyuanGlobal.ifNoticeQiaodaoThanClick()
+    // sleep(1e3)
     funs.shoucai()
 }
 
@@ -56,8 +57,27 @@ funs.shoucai = function ()
 {
     console.log("开始收菜")
     click(570, 787)
-    console.log("收菜完了")
     sleep(1e3)
+    console.log("收菜完了")
+    click(1078, 787)
+    sleep(1e3)
+}
+
+funs.heliClick = function ()
+{
+    console.log("开始点击合力按钮");
+    for(;;)
+    {
+        if(funs.clickAreaByImage("targetimage/jinbixiaozhen/heli.png" ,true))
+        {
+            sleep(5e3)
+        }
+        else
+        {
+            break
+        }
+    }
+    console.log("点击合力按钮结束");
 }
  
 funs.qiandao = function ()
