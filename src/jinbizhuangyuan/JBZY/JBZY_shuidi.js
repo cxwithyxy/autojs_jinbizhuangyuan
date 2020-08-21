@@ -17,7 +17,16 @@ funs.clickYijianLingshuidi = function ()
     sleep(1e3)
     for(;;)
     {
-        let allBtns = funs.findInUIObjectWithTextMatches(depth(0).find()[0], /^领取奖励$/)
+        let allBtns = []
+        try
+        {
+            allBtns = funs.findInUIObjectWithTextMatches(depth(0).find()[0], /^领取奖励$/)
+        }
+        catch(e)
+        {
+            sleep(300)
+            continue
+        }
         if(allBtns.length == 0)
         {
             break
@@ -59,11 +68,11 @@ funs.shuidiButtonCanClick = function (buttonBox)
 funs.isShuidiRenwuMatch = function (textBox)
 {
     let str = textBox.text()
-    let c1 = str.match(new RegExp("^逛.*"))
-    let c2 = str.match(new RegExp(".*榜"))
-    let c3 = str.match(new RegExp("^看免费小说.*"))
-    let c4 = str.match(new RegExp("^每日来访.*"))
-    return c1 || c2 || c3 || c4
+    return /^逛.*/.test(str) ||
+        /.*榜/.test(str) ||
+        /^看免费小说.*/.test(str) ||
+        /^每日来访.*/.test(str) ||
+        /^浏览福利中心.*/.test(str)
 }
  
 funs.hasAllShudiDo = function ()
