@@ -4,17 +4,16 @@ let TopbarConsole = require("./ui/TopbarConsole.js")
 
 let funs = {}
 
-let deviceWidth = 0
-let deviceHeight = 0
+let stor = storages.create("CX2889FunctionsJs")
 
 funs.getDeviceWidth = function ()
 {
-    return deviceWidth
+    return stor.get("deviceWidth")
 }
 
 funs.getDeviceHeight = function ()
 {
-    return deviceHeight
+    return stor.get("deviceHeight")
 }
 
 funs.runAfterPrepare = function (callbackfuns)
@@ -44,8 +43,8 @@ funs.deviceSizeInit = function ()
     w.setTouchable(false);
     w.setSize(-1, -1)
     sleep(1e3)
-    deviceWidth = w.getWidth()
-    deviceHeight = w.getHeight()
+    stor.put("deviceWidth", w.getWidth())
+    stor.put("deviceHeight", w.getHeight())
     w.close()
 }
 
