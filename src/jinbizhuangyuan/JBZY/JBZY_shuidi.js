@@ -15,7 +15,16 @@ funs.openShuidi = function ()
 funs.clickYijianLingshuidi = function ()
 {
     sleep(1e3)
-    text("一键领取").find()[0].click()
+    for(;;)
+    {
+        let allBtns = funs.findInUIObjectWithTextMatches(depth(0).find()[0], /^领取奖励$/)
+        if(allBtns.length == 0)
+        {
+            break
+        }
+        allBtns.shift().click()
+        sleep(1e3)
+    }
     sleep(1e3)
 }
  
